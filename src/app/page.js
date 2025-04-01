@@ -1,16 +1,22 @@
-export default async function Home() {
-  // Fetch the API response
-  const res = await fetch("http://localhost:3000/api/csc309-e11");
-  const html = await res.text();
+"use client"; // Convert to a Client Component
+
+import { useEffect, useState } from "react";
+
+export default function Home() {
+  const [content, setContent] = useState("");
+
+  useEffect(() => {
+    fetch("/api/csc309-e11")
+      .then((res) => res.text())
+      .then((html) => setContent(html))
+      .catch((err) => console.error("Fetch error:", err));
+  }, []);
 
   return (
     <main>
       <h1>Welcome to My App</h1>
-      {/* Render the HTML from API */}
-      <div id="auto-tester">
-        Hi. I am xuruili, and I have learned how to develop a full-stack web app
-        and deploy it!
-      </div>
+      <div dangerouslySetInnerHTML={{ __html: content }} />
     </main>
   );
 }
+
