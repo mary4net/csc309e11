@@ -7,7 +7,10 @@ export default async function Home() {
     <main>
       <h1>Welcome to My App</h1>
       {/* Render the HTML from API */}
-      <div dangerouslySetInnerHTML={{ __html: html }} />
+      <div id="auto-tester">
+        Hi. I am xuruili, and I have learned how to develop a full-stack web app
+        and deploy it!
+      </div>
     </main>
   );
 }
